@@ -1,0 +1,12 @@
+---
+interface Props {
+  brands: string[];
+}
+
+const { brands } = Astro.props;
+---
+
+<section class="logo-strip" aria-label="Imaginary customers">
+  <span>Trusted by teams at</span>
+  {brands.map((brand) => <strong>{brand}</strong>)}
+</section>

@@ -1,0 +1,27 @@
+---
+interface Step {
+  title: string;
+  copy: string;
+}
+
+interface Props {
+  steps: Step[];
+}
+
+const { steps } = Astro.props;
+---
+
+<section id="demo" class="split section" aria-labelledby="demo-title">
+  <div>
+    <p class="eyebrow">How it works</p>
+    <h2 id="demo-title">From calendar invite to cedar-scented dominance in 12 minutes.</h2>
+  </div>
+  <ol class="steps">
+    {steps.map((step) => (
+      <li>
+        <strong>{step.title}</strong>
+        <span>{step.copy}</span>
+      </li>
+    ))}
+  </ol>
+</section>

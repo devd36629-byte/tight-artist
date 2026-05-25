@@ -1,0 +1,23 @@
+---
+import FeatureCard from './FeatureCard.astro';
+
+interface Feature {
+  icon: string;
+  title: string;
+  copy: string;
+}
+
+interface Props {
+  features: Feature[];
+}
+
+const { features } = Astro.props;
+---
+
+<section id="features" class="section" aria-labelledby="features-title">
+  <p class="eyebrow">Features</p>
+  <h2 id="features-title">Everything your office needs to perspire with purpose.</h2>
+  <div class="feature-grid">
+    {features.map((feature) => <FeatureCard {...feature} />)}
+  </div>
+</section>

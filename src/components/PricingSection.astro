@@ -1,0 +1,26 @@
+---
+import PricingCard from './PricingCard.astro';
+
+interface Plan {
+  name: string;
+  price: string;
+  period: string;
+  featured: boolean;
+  copy: string;
+  items: string[];
+}
+
+interface Props {
+  plans: Plan[];
+}
+
+const { plans } = Astro.props;
+---
+
+<section id="pricing" class="section pricing" aria-labelledby="pricing-title">
+  <p class="eyebrow">Subscriptions</p>
+  <h2 id="pricing-title">Productivity heat levels for every burn rate.</h2>
+  <div class="pricing-grid">
+    {plans.map((plan) => <PricingCard plan={plan} />)}
+  </div>
+</section>

@@ -1,0 +1,32 @@
+---
+import TruckIllustration from './TruckIllustration.astro';
+
+const metrics = [
+  { value: '99.9%', label: 'Meeting escape uptime' },
+  { value: '7', label: 'Productivity heat levels' },
+  { value: '0g', label: 'Tailpipe emissions, maximum vibes' },
+];
+---
+
+<section id="top" class="hero" aria-labelledby="hero-title">
+  <div class="hero-copy">
+    <p class="eyebrow">Corporate wellness, but with torque</p>
+    <h1 id="hero-title">The luxury sauna truck that crashes your meeting on purpose.</h1>
+    <p class="hero-intro">
+      Sauna-as-a-Service is the world’s first premium fleet of mobile saunas mounted on electric monster trucks. Step out for a “wellness break,” get whipped with birch branches, and return smelling like victory, tar, and promotion potential.
+    </p>
+    <div class="hero-actions">
+      <a class="button primary" href="#pricing">Start sweating strategically</a>
+      <a class="button secondary" href="#demo">Watch the fake demo</a>
+    </div>
+    <dl class="metrics" aria-label="Company metrics">
+      {metrics.map((metric) => (
+        <div>
+          <dt>{metric.value}</dt>
+          <dd>{metric.label}</dd>
+        </div>
+      ))}
+    </dl>
+  </div>
+  <TruckIllustration />
+</section>

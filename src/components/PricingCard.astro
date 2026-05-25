@@ -1,0 +1,27 @@
+---
+interface Plan {
+  name: string;
+  price: string;
+  period: string;
+  featured: boolean;
+  copy: string;
+  items: string[];
+}
+
+interface Props {
+  plan: Plan;
+}
+
+const { plan } = Astro.props;
+---
+
+<article class:list={['plan', { featured: plan.featured }]}>
+  <p class="plan-kicker">{plan.featured ? 'Most unnecessarily popular' : 'Corporate-approved'}</p>
+  <h3>{plan.name}</h3>
+  <p class="price">{plan.price}<span>{plan.period}</span></p>
+  <p>{plan.copy}</p>
+  <ul>
+    {plan.items.map((item) => <li>{item}</li>)}
+  </ul>
+  <a class="button" href="#faq">Choose {plan.name}</a>
+</article>

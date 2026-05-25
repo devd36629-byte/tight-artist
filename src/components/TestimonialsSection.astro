@@ -1,0 +1,29 @@
+---
+interface Testimonial {
+  quote: string;
+  name: string;
+  title: string;
+}
+
+interface Props {
+  testimonials: Testimonial[];
+}
+
+const { testimonials } = Astro.props;
+---
+
+<section class="section testimonials" aria-labelledby="testimonials-title">
+  <p class="eyebrow">Testimonials</p>
+  <h2 id="testimonials-title">Loved by leaders with extremely damp confidence.</h2>
+  <div class="testimonial-grid">
+    {testimonials.map((testimonial) => (
+      <figure>
+        <blockquote>“{testimonial.quote}”</blockquote>
+        <figcaption>
+          <strong>{testimonial.name}</strong>
+          <span>{testimonial.title}</span>
+        </figcaption>
+      </figure>
+    ))}
+  </div>
+</section>
