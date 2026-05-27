@@ -1,15 +1,20 @@
-<div class="truck-card" aria-label="Illustration of an electric monster truck sauna">
-  <div class="steam s1"></div>
-  <div class="steam s2"></div>
-  <div class="steam s3"></div>
-  <div class="sauna-box">
-    <span class="chimney"></span>
-    <span class="window"></span>
-    <span class="door"></span>
-    <strong>SaaS</strong>
-  </div>
-  <div class="truck-bed"></div>
-  <div class="wheel left"></div>
-  <div class="wheel right"></div>
-  <div class="zap">⚡</div>
-</div>
+---
+const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL : `${import.meta.env.BASE_URL}/`;
+const saunaTruckPhoto = base + 'uploads/mobile-sauna-bus-exterior.jpg';
+---
+
+<figure class="truck-card photo-card">
+  <img
+    class="truck-image truck-photo"
+    src={saunaTruckPhoto}
+    width="1200"
+    height="900"
+    alt="A mobile sauna bus parked outdoors, ready to deliver a corporate wellness steam break"
+    loading="eager"
+    decoding="async"
+  />
+  <figcaption>
+    <span>Live from Facilities’ worst Slack thread</span>
+    Electric sauna deployment vehicle, shown moments before “just a quick wellness break.”
+  </figcaption>
+</figure>

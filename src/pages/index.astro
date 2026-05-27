@@ -4,6 +4,7 @@ import Navigation from '../components/Navigation.astro';
 import Hero from '../components/Hero.astro';
 import LogoStrip from '../components/LogoStrip.astro';
 import FeaturesSection from '../components/FeaturesSection.astro';
+import ImageShowcase from '../components/ImageShowcase.astro';
 import HowItWorksSection from '../components/HowItWorksSection.astro';
 import PricingSection from '../components/PricingSection.astro';
 import TestimonialsSection from '../components/TestimonialsSection.astro';
@@ -118,6 +119,7 @@ const brands = ['Sweatforce', 'HotDesk.io', 'SaunaCloud', 'BirchOps'];
     <Hero />
     <LogoStrip brands={brands} />
     <FeaturesSection features={features} />
+    <ImageShowcase />
     <HowItWorksSection steps={steps} />
     <PricingSection plans={plans} />
     <TestimonialsSection testimonials={testimonials} />

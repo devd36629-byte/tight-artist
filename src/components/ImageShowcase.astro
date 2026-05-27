@@ -1,0 +1,46 @@
+---
+const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL : `${import.meta.env.BASE_URL}/`;
+
+const images = [
+  {
+    src: base + 'uploads/luxury-sauna-heater-interior.jpg',
+    alt: 'Warm sauna stones and wood interior representing the premium heat experience',
+    eyebrow: 'The heat stack',
+    title: 'Premium löyly that makes KPIs confess.',
+  },
+  {
+    src: base + 'uploads/lapland-mobile-sauna-experience.jpg',
+    alt: 'A sauna bus in a snowy northern landscape used as inspiration for mobile sauna service',
+    eyebrow: 'Field operations',
+    title: 'Nordic credibility, parking-lot delivery.',
+  },
+  {
+    src: base + 'uploads/corporate-sauna-steam-break.jpg',
+    alt: 'A compact sauna scene used to promote workplace steam breaks',
+    eyebrow: 'Steam culture',
+    title: 'Return from break smelling legally victorious.',
+  },
+];
+---
+
+<section class="section image-showcase" aria-labelledby="showcase-title">
+  <div class="showcase-heading">
+    <p class="eyebrow">Actual sauna energy</p>
+    <h2 id="showcase-title">Real steam visuals for a completely sensible fake enterprise product.</h2>
+    <p>
+      We took the staged sauna evidence out of the secret upload bunker and put it where your CFO can see it: beside claims about productivity heat levels.
+    </p>
+  </div>
+
+  <div class="showcase-grid">
+    {images.map((image) => (
+      <article class="showcase-card">
+        <img src={image.src} alt={image.alt} width="900" height="650" loading="lazy" decoding="async" />
+        <div>
+          <p>{image.eyebrow}</p>
+          <h3>{image.title}</h3>
+        </div>
+      </article>
+    ))}
+  </div>
+</section>
