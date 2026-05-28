@@ -37,7 +37,7 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
 			.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
 			.page { position: relative; min-height: 100vh; overflow: hidden; background: radial-gradient(circle at 15% 5%, rgba(251, 146, 60, .32), transparent 28rem), radial-gradient(circle at 88% 9%, rgba(244, 63, 94, .22), transparent 24rem), linear-gradient(135deg, #140c08 0%, #2b160d 48%, #0f172a 100%); }
 			.page::before { content: ''; position: fixed; inset: 0; pointer-events: none; opacity: .12; background-image: linear-gradient(rgba(255,255,255,.08) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.08) 1px, transparent 1px); background-size: 42px 42px; -webkit-mask-image: linear-gradient(to bottom, #000, transparent); mask-image: linear-gradient(to bottom, #000, transparent); }
-			.nav, .hero, .section, .logo-strip, .final-cta, footer { width: min(1160px, calc(100% - 32px)); margin-inline: auto; }
+			.nav, .section, .logo-strip, .final-cta, footer { width: min(1160px, calc(100% - 32px)); margin-inline: auto; }
 
 			.nav { position: sticky; top: 16px; z-index: 5; display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: .75rem; margin-top: 16px; border: 1px solid rgba(255,237,213,.16); border-radius: 999px; background: rgba(18, 11, 8, .72); backdrop-filter: blur(18px); box-shadow: 0 18px 60px rgba(0,0,0,.24); }
 			.brand, .nav-links, .nav-cta, .button { text-decoration: none; font-weight: 800; }
@@ -53,7 +53,11 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
 			.primary { color: #1c100a; border: 0; background: linear-gradient(135deg, #fed7aa, #fb7185); }
 			.secondary { color: #ffedd5; }
 
-			.hero { display: grid; grid-template-columns: minmax(0, 1.03fr) minmax(320px, .97fr); gap: clamp(2rem, 5vw, 5rem); align-items: center; padding: clamp(5rem, 10vw, 8rem) 0 4rem; }
+			.hero { position: relative; isolation: isolate; display: grid; grid-template-columns: minmax(0, 1160px); justify-content: center; align-items: center; width: 100%; margin: clamp(1.5rem, 3vw, 2.75rem) auto 4rem; padding: clamp(5rem, 10vw, 8rem) max(1rem, calc((100vw - 1160px) / 2)) clamp(3.5rem, 6vw, 5rem); overflow: hidden; border-block: 1px solid rgba(255,237,213,.18); background-color: #1c100a; background-image: linear-gradient(90deg, rgba(18,11,8,.96) 0%, rgba(18,11,8,.78) 42%, rgba(18,11,8,.38) 70%, rgba(18,11,8,.18) 100%), radial-gradient(circle at 18% 22%, rgba(251,146,60,.38), transparent 28rem), linear-gradient(to top, rgba(18,11,8,.92), rgba(18,11,8,.16) 44%, rgba(18,11,8,.28)), var(--hero-bus-image); background-size: cover; background-position: center; box-shadow: inset 0 1px 0 rgba(255,255,255,.16), 0 36px 110px rgba(0,0,0,.38); }
+			.hero::before { content: ''; position: absolute; inset: 0; z-index: 0; pointer-events: none; opacity: .2; background-image: linear-gradient(rgba(255,237,213,.12) 1px, transparent 1px), linear-gradient(90deg, rgba(255,237,213,.12) 1px, transparent 1px); background-size: 34px 34px; -webkit-mask-image: linear-gradient(to right, #000 0%, #000 52%, transparent 88%); mask-image: linear-gradient(to right, #000 0%, #000 52%, transparent 88%); }
+			.hero::after { content: ''; position: absolute; inset: auto -10% -30% -10%; z-index: 0; height: 52%; pointer-events: none; background: radial-gradient(ellipse at center, rgba(253,186,116,.26), transparent 64%); filter: blur(28px); }
+			.hero > * { position: relative; z-index: 1; }
+			.hero-copy { max-width: 740px; text-shadow: 0 2px 26px rgba(0,0,0,.55); }
 			.eyebrow { margin: 0 0 .85rem; color: #fdba74; font-size: .78rem; font-weight: 900; letter-spacing: .18em; text-transform: uppercase; }
 			h1, h2, h3, p { margin-top: 0; }
 			h1 { margin-bottom: 1.35rem; max-width: 11ch; font-size: clamp(3.5rem, 8vw, 7.7rem); line-height: .84; letter-spacing: -.085em; text-wrap: balance; }
@@ -63,7 +67,7 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
 			.hero-intro { max-width: 63ch; font-size: clamp(1.1rem, 2vw, 1.35rem); }
 			.hero-actions { display: flex; flex-wrap: wrap; gap: .85rem; margin: 2rem 0; }
 			.metrics { display: grid; grid-template-columns: repeat(3, 1fr); gap: .75rem; margin: 0; }
-			.metrics div { padding: 1rem; border: 1px solid rgba(255,237,213,.14); border-radius: 22px; background: rgba(255,255,255,.055); }
+			.metrics div { padding: 1rem; border: 1px solid rgba(255,237,213,.18); border-radius: 22px; background: rgba(18,11,8,.54); backdrop-filter: blur(14px); box-shadow: inset 0 1px 0 rgba(255,255,255,.08); }
 			.metrics dt { font-size: 1.45rem; font-weight: 900; color: #fff7ed; }
 			.metrics dd { margin: .25rem 0 0; color: #fdba74; font-size: .86rem; }
 
@@ -124,7 +128,9 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
 
 			@media (max-width: 900px) {
 				.nav-links { display: none; }
-				.hero, .split, .faq { grid-template-columns: 1fr; }
+				.split, .faq { grid-template-columns: 1fr; }
+				.hero { background-image: linear-gradient(180deg, rgba(18,11,8,.96) 0%, rgba(18,11,8,.82) 48%, rgba(18,11,8,.42) 100%), radial-gradient(circle at 18% 22%, rgba(251,146,60,.38), transparent 28rem), var(--hero-bus-image); background-position: center top; }
+				.hero::before { -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 62%, transparent 92%); mask-image: linear-gradient(to bottom, #000 0%, #000 62%, transparent 92%); }
 				.truck-card { min-height: 420px; }
 				.showcase-heading, .showcase-grid { grid-template-columns: 1fr; }
 				.showcase-heading .eyebrow, .showcase-heading h2, .showcase-heading p:last-child { grid-column: auto; grid-row: auto; }

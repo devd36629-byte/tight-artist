@@ -1,5 +1,6 @@
 ---
-import TruckIllustration from './TruckIllustration.astro';
+const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL : `${import.meta.env.BASE_URL}/`;
+const saunaBusPhoto = base + 'uploads/mobile-sauna-bus-exterior.jpg';
 
 const metrics = [
   { value: '99.9%', label: 'Meeting escape uptime' },
@@ -8,7 +9,12 @@ const metrics = [
 ];
 ---
 
-<section id="top" class="hero" aria-labelledby="hero-title">
+<section
+  id="top"
+  class="hero"
+  style={`--hero-bus-image: url("${saunaBusPhoto}")`}
+  aria-labelledby="hero-title"
+>
   <div class="hero-copy">
     <p class="eyebrow">Corporate wellness, but with torque</p>
     <h1 id="hero-title">The luxury sauna truck that crashes your meeting on purpose.</h1>
@@ -28,5 +34,4 @@ const metrics = [
       ))}
     </dl>
   </div>
-  <TruckIllustration />
 </section>
