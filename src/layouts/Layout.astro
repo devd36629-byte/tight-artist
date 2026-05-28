@@ -39,7 +39,7 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
 			.page::before { content: ''; position: fixed; inset: 0; pointer-events: none; opacity: .12; background-image: linear-gradient(rgba(255,255,255,.08) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.08) 1px, transparent 1px); background-size: 42px 42px; -webkit-mask-image: linear-gradient(to bottom, #000, transparent); mask-image: linear-gradient(to bottom, #000, transparent); }
 			.nav, .section, .logo-strip, .final-cta, footer { width: min(1160px, calc(100% - 32px)); margin-inline: auto; }
 
-			.nav { position: sticky; top: 16px; z-index: 5; display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: .75rem; margin-top: 16px; border: 1px solid rgba(255,237,213,.16); border-radius: 999px; background: rgba(18, 11, 8, .72); backdrop-filter: blur(18px); box-shadow: 0 18px 60px rgba(0,0,0,.24); }
+			.nav { position: fixed; top: 16px; left: 50%; z-index: 20; display: flex; align-items: center; justify-content: space-between; gap: 1rem; width: min(1160px, calc(100% - 32px)); padding: .75rem; margin-top: 0; border: 1px solid rgba(255,237,213,.16); border-radius: 999px; background: rgba(18, 11, 8, .72); backdrop-filter: blur(18px); box-shadow: 0 18px 60px rgba(0,0,0,.24); transform: translateX(-50%); }
 			.brand, .nav-links, .nav-cta, .button { text-decoration: none; font-weight: 800; }
 			.brand { display: inline-flex; align-items: center; gap: .65rem; letter-spacing: -.03em; }
 			.brand span { display: grid; place-items: center; width: 2.25rem; height: 2.25rem; border-radius: 50%; color: #1b0f0a; background: linear-gradient(135deg, #fdba74, #fb7185); box-shadow: 0 0 34px rgba(251,146,60,.42); }
@@ -53,9 +53,9 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
 			.primary { color: #1c100a; border: 0; background: linear-gradient(135deg, #fed7aa, #fb7185); }
 			.secondary { color: #ffedd5; }
 
-			.hero { position: relative; isolation: isolate; display: grid; grid-template-columns: minmax(0, 1160px); justify-content: center; align-items: center; width: 100%; margin: clamp(1.5rem, 3vw, 2.75rem) auto 4rem; padding: clamp(5rem, 10vw, 8rem) max(1rem, calc((100vw - 1160px) / 2)) clamp(3.5rem, 6vw, 5rem); overflow: hidden; border-block: 1px solid rgba(255,237,213,.18); background-color: #1c100a; background-image: linear-gradient(90deg, rgba(18,11,8,.96) 0%, rgba(18,11,8,.78) 42%, rgba(18,11,8,.38) 70%, rgba(18,11,8,.18) 100%), radial-gradient(circle at 18% 22%, rgba(251,146,60,.38), transparent 28rem), linear-gradient(to top, rgba(18,11,8,.92), rgba(18,11,8,.16) 44%, rgba(18,11,8,.28)), var(--hero-bus-image); background-size: cover; background-position: center; box-shadow: inset 0 1px 0 rgba(255,255,255,.16), 0 36px 110px rgba(0,0,0,.38); }
+			.hero { position: relative; isolation: isolate; display: grid; grid-template-columns: minmax(0, 1160px); justify-content: center; align-items: end; width: 100%; min-height: 100svh; margin: 0 auto 4rem; padding: clamp(7rem, 12vw, 9rem) max(1rem, calc((100vw - 1160px) / 2)) clamp(2.25rem, 6vw, 5rem); overflow: hidden; border-top: 0; border-bottom: 0; background-color: #140c08; background-image: linear-gradient(90deg, rgba(18,11,8,.96) 0%, rgba(18,11,8,.78) 42%, rgba(18,11,8,.38) 70%, rgba(18,11,8,.18) 100%), radial-gradient(circle at 18% 22%, rgba(251,146,60,.38), transparent 28rem), linear-gradient(to top, #140c08 0%, rgba(20,12,8,.78) 14%, rgba(18,11,8,.16) 48%, rgba(18,11,8,.28) 100%), var(--hero-bus-image); background-size: cover; background-position: center; box-shadow: inset 0 1px 0 rgba(255,255,255,.16), 0 36px 110px rgba(0,0,0,.28); }
 			.hero::before { content: ''; position: absolute; inset: 0; z-index: 0; pointer-events: none; opacity: .2; background-image: linear-gradient(rgba(255,237,213,.12) 1px, transparent 1px), linear-gradient(90deg, rgba(255,237,213,.12) 1px, transparent 1px); background-size: 34px 34px; -webkit-mask-image: linear-gradient(to right, #000 0%, #000 52%, transparent 88%); mask-image: linear-gradient(to right, #000 0%, #000 52%, transparent 88%); }
-			.hero::after { content: ''; position: absolute; inset: auto -10% -30% -10%; z-index: 0; height: 52%; pointer-events: none; background: radial-gradient(ellipse at center, rgba(253,186,116,.26), transparent 64%); filter: blur(28px); }
+			.hero::after { content: ''; position: absolute; inset: auto 0 -1px 0; z-index: 0; height: 48%; pointer-events: none; background: linear-gradient(to bottom, rgba(20,12,8,0) 0%, rgba(20,12,8,.62) 58%, #140c08 100%), radial-gradient(ellipse at 50% 72%, rgba(253,186,116,.18), transparent 62%); }
 			.hero > * { position: relative; z-index: 1; }
 			.hero-copy { max-width: 740px; text-shadow: 0 2px 26px rgba(0,0,0,.55); }
 			.eyebrow { margin: 0 0 .85rem; color: #fdba74; font-size: .78rem; font-weight: 900; letter-spacing: .18em; text-transform: uppercase; }
@@ -129,7 +129,7 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
 			@media (max-width: 900px) {
 				.nav-links { display: none; }
 				.split, .faq { grid-template-columns: 1fr; }
-				.hero { background-image: linear-gradient(180deg, rgba(18,11,8,.96) 0%, rgba(18,11,8,.82) 48%, rgba(18,11,8,.42) 100%), radial-gradient(circle at 18% 22%, rgba(251,146,60,.38), transparent 28rem), var(--hero-bus-image); background-position: center top; }
+				.hero { background-image: linear-gradient(180deg, rgba(18,11,8,.96) 0%, rgba(18,11,8,.82) 48%, rgba(18,11,8,.42) 100%), radial-gradient(circle at 18% 22%, rgba(251,146,60,.38), transparent 28rem), linear-gradient(to top, #140c08 0%, rgba(20,12,8,.76) 16%, rgba(18,11,8,.24) 56%, transparent 100%), var(--hero-bus-image); background-position: center top; }
 				.hero::before { -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 62%, transparent 92%); mask-image: linear-gradient(to bottom, #000 0%, #000 62%, transparent 92%); }
 				.truck-card { min-height: 420px; }
 				.showcase-heading, .showcase-grid { grid-template-columns: 1fr; }
@@ -143,7 +143,7 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
 				.nav-cta { display: none; }
 				h1 { max-width: 100%; }
 				.metrics, .feature-grid, .pricing-grid, .testimonial-grid { grid-template-columns: 1fr; }
-				.hero { padding-top: 3.5rem; }
+				.hero { padding-top: 7rem; padding-bottom: 2rem; }
 				.truck-card { min-height: 360px; border-radius: 30px; }
 				.showcase-card, .showcase-card:first-child { min-height: 320px; border-radius: 28px; }
 				.truck-image { width: min(100%, 460px); }
